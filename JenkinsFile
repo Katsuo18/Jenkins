@@ -20,9 +20,7 @@ pipeline {
     }
     post {
          always {
-          mail to: 'mmunozc40@iescastelar.com',
-          subject: "Status of pipeline: ${currentBuild.fullDisplayName}",
-          body: "${env.BUILD_URL} has result ${currentBuild.result}"
+            echo 'Enviando Mensaje a mmunozc40@iescastelar.com'
         }
       }
 }
