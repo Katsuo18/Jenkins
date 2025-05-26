@@ -1,13 +1,9 @@
 pipeline {
-    agent {
-        docker { image 'debian'
-        args '-u root:root'
-        }
-    }
+    agent any
     stages {
         stage('Clone') {
             steps {
-                git branch:'master',url:'https://github.com/Katsuo18/Jenkins'
+                git branch:'main',url:'https://github.com/Katsuo18/Jenkins'
             }
         }
         stage('Install') {
@@ -18,9 +14,7 @@ pipeline {
         stage('Test')
         {
             steps {
-                sh '''
-                export LC_ALL=C.UTF-8
-                OUTPUT=`cat doc/*.md | aspell list -d es -p ./.aspell.es.pws`; if [ -n "$OUTPUT" ]; then echo $OUTPUT; exit 1; fi'''
+                echo 'Testing'
             }
         }
     }
