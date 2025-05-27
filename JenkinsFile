@@ -29,10 +29,14 @@ pipeline {
             echo 'Enviando Mensaje a mmunozc40@iescastelar.com'
         }
         success {
-            echo 'El pipeline terminó con éxito'
+            mail to: 'mmunozc40@iescastelar.com',
+            subject: 'Pipeline Exitoso',
+            body: 'El pipeline se ha ejecutado correctamente.'
         }
         failure {
-            echo 'Algo falló en el pipeline'
+            mail to: 'mmunozc40@iescastelar.com',
+            subject: 'Pipeline Fallido',
+            body: 'El pipeline ha fallado. Por favor, revisa los logs para más detalles.'
         }
       }
 }
